@@ -15,8 +15,7 @@ jobs:
       redis:
         image: redis
         ports:
-         - 6379:6379
-        options: --entrypoint redis-server
+         - 6379/tpc
         
     steps:
       - uses: actions/checkout@v2
