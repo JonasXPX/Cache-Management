@@ -13,10 +13,12 @@ jobs:
         env: 
          POSTGRES_PASSSWORD: postgres
       redis:
-        image: redis
+        image: redis:alpine
         ports:
          - 6379:6379
-        
+        options: --entrypoint redis-server
+    env:
+      REDIS_HOST: redis
     steps:
       - uses: actions/checkout@v2
       
