@@ -10,6 +10,9 @@ jobs:
         image: postgres
         env: 
          POSTGRES_PASSSWORD: postgres
+      redis:
+        image: redis
+        
     steps:
       - uses: actions/checkout@v2
       
@@ -18,11 +21,6 @@ jobs:
         with: 
           java-version: '11'
           distribution: 'adopt'
-          
-      - name: Start Redis
-        uses: supercharge/redis-github-action@1.2.0
-        with:
-          redis-version: 6
           
       - name: run tests
         run: chmod +x mvnw && ./mvnw test
