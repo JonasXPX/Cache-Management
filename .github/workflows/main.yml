@@ -1,0 +1,21 @@
+name: testes
+
+on: [push]
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: openjdk:11
+    services:
+      postgres:
+        image: postgres
+        env: 
+         POSTGRES_PASSSWORD: postgres
+    steps:
+      - uses: actions/checkout@v2
+      - name: build JDK11
+        uses: actions/setup-java@v2
+        with: 
+          java-version: '11'
+          distribution: 'adopt'
+      - name: run tests
+        run: mvn test
